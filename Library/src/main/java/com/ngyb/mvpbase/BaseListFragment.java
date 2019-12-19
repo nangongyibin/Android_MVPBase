@@ -39,7 +39,7 @@ public abstract class BaseListFragment extends BaseLoadDataFragment {
         });
     }
 
-    private void onListItemClick(int position) {
+    protected void onListItemClick(int position) {
 
     }
 
