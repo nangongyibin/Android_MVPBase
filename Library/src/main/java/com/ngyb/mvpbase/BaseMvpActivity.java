@@ -1,7 +1,7 @@
 package com.ngyb.mvpbase;
 
 
-import androidx.lifecycle.Lifecycle;
+import android.arch.lifecycle.Lifecycle;
 
 import com.uber.autodispose.AutoDispose;
 import com.uber.autodispose.AutoDisposeConverter;
