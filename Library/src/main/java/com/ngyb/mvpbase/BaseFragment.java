@@ -30,7 +30,10 @@ public abstract class BaseFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    protected void dealOnCreate(Bundle savedInstanceState){};
+    protected void dealOnCreate(Bundle savedInstanceState) {
+    }
+
+    ;
 
     /**
      * 初始化视图
@@ -44,5 +47,14 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        dealOnActivityCreated(savedInstanceState);
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    protected void dealOnActivityCreated(Bundle savedInstanceState) {
     }
 }
