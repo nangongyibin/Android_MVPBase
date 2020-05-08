@@ -24,6 +24,14 @@ public abstract class BaseFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        dealOnCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
+    }
+
+    protected void dealOnCreate(Bundle savedInstanceState){};
+
     /**
      * 初始化视图
      *
