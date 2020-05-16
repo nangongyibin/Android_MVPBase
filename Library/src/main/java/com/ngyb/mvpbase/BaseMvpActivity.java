@@ -36,4 +36,14 @@ public abstract class BaseMvpActivity<T extends BasePresenter> extends BaseActiv
         return AutoDispose.autoDisposable(AndroidLifecycleScopeProvider
                 .from(this, Lifecycle.Event.ON_DESTROY));
     }
+
+    @Override
+    protected void onResume() {
+        onResumeNew();
+        super.onResume();
+    }
+
+    protected void onResumeNew() {
+
+    }
 }
