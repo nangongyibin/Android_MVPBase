@@ -19,10 +19,16 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(this.getLayoutId(), container, false);
+        View view;
+        if (getLocalView() == null) {
+            view = inflater.inflate(this.getLayoutId(), container, false);
+        } else {
+            view = getLocalView();
+        }
         init(view);
         return view;
     }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,7 +39,24 @@ public abstract class BaseFragment extends Fragment {
     protected void dealOnCreate(Bundle savedInstanceState) {
     }
 
-    ;
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        dealOnActivityCreated(savedInstanceState);
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    protected void dealOnActivityCreated(Bundle savedInstanceState) {
+    }
+
+    @Override
+    public void onResume() {
+        dealOnResume();
+        super.onResume();
+    }
+
+    private void dealOnResume() {
+
+    }
 
     /**
      * 初始化视图
@@ -44,17 +67,9 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract int getLayoutId();
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    protected View getLocalView() {
+        return null;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        dealOnActivityCreated(savedInstanceState);
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    protected void dealOnActivityCreated(Bundle savedInstanceState) {
-    }
+    ;
 }
