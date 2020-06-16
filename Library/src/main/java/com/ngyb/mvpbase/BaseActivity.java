@@ -24,8 +24,18 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mContext = this;
         setContentView(this.getLayoutId());
+        dealSavedInstanceState(savedInstanceState);
         init();
     }
+
+    /**
+     *
+     * @param savedInstanceState
+     */
+    protected void dealSavedInstanceState(Bundle savedInstanceState) {
+    }
+
+    ;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
