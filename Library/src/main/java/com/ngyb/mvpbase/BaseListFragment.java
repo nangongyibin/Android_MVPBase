@@ -40,7 +40,6 @@ public abstract class BaseListFragment extends BaseLoadDataFragment {
     }
 
     protected void onListItemClick(int position) {
-
     }
 
     protected  View onCreateHeaderView(){

@@ -7,7 +7,7 @@ package com.ngyb.mvpbase;
  * 日期：2019/4/15 10:20
  */
 public class BasePresenter<V extends BaseView> {
-    protected V mView;
+    protected V view;
 
     /**
      * 绑定view，一般在初始化中调用该方法
@@ -15,7 +15,7 @@ public class BasePresenter<V extends BaseView> {
      * @param view view
      */
     public void attachView(V view) {
-        this.mView = view;
+        this.view = view;
     }
 
     /**
@@ -23,7 +23,7 @@ public class BasePresenter<V extends BaseView> {
      */
 
     public void detachView() {
-        this.mView = null;
+        this.view = null;
     }
 
     /**
@@ -32,6 +32,6 @@ public class BasePresenter<V extends BaseView> {
      * @return
      */
     public boolean isViewAttached() {
-        return mView != null;
+        return view != null;
     }
 }

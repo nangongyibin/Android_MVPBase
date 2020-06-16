@@ -14,15 +14,14 @@ import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider;
  * 日期：2019/4/15 10:19
  */
 public abstract class BaseMvpActivity<T extends BasePresenter> extends BaseActivity implements BaseView {
-    protected T mPresenter;
+    protected T presenter;
 
     @Override
-    protected void onDestroy() {
-        if (mPresenter != null) {
-            mPresenter.detachView();
+    protected void dealOnDestroy() {
+        if (presenter != null) {
+            presenter.detachView();
         }
-        mContext = null;
-        super.onDestroy();
+        super.dealOnDestroy();
     }
 
     /**
@@ -35,15 +34,5 @@ public abstract class BaseMvpActivity<T extends BasePresenter> extends BaseActiv
     public <T> AutoDisposeConverter<T> bindAutoDispose() {
         return AutoDispose.autoDisposable(AndroidLifecycleScopeProvider
                 .from(this, Lifecycle.Event.ON_DESTROY));
-    }
-
-    @Override
-    protected void onResume() {
-        onResumeNew();
-        super.onResume();
-    }
-
-    protected void onResumeNew() {
-
     }
 }

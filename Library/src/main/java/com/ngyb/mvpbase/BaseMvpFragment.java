@@ -1,7 +1,5 @@
 package com.ngyb.mvpbase;
 
-import android.content.Context;
-
 /**
  * 作者：南宫燚滨
  * 描述：
@@ -9,31 +7,13 @@ import android.content.Context;
  * 日期：2019/4/15 10:20
  */
 public abstract class BaseMvpFragment<T extends BasePresenter> extends BaseFragment implements BaseView {
-    protected T mPresenter;
-    public Context mContext;
+    protected T presenter;
 
     @Override
-    public void onAttach(Context context) {
-        mContext = context;
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onDestroyView() {
-        if (mPresenter != null) {
-            mPresenter.detachView();
+    protected void dealOnDestroyView() {
+        if (presenter != null) {
+            presenter.detachView();
         }
-        super.onDestroyView();
-    }
-
-    @Override
-    public void onDetach() {
-        mContext = null;
-        super.onDetach();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
+        super.dealOnDestroyView();
     }
 }

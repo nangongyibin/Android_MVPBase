@@ -53,14 +53,9 @@ public abstract  class BaseLoadDataFragment extends BaseFragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void dealOnViewCreated(View view, Bundle savedInstanceState) {
+        super.dealOnViewCreated(view, savedInstanceState);
         startLoadData();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
     }
 
     protected void onLoadDataSuccess(){

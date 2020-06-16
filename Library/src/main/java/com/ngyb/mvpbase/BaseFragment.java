@@ -1,6 +1,8 @@
 package com.ngyb.mvpbase;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,15 +17,16 @@ import android.view.ViewGroup;
  * 日期：2019/4/15 10:17
  */
 public abstract class BaseFragment extends Fragment {
+    public Context context;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view;
-        if (getLocalView() == null) {
+        if (getOnCreateView() == null) {
             view = inflater.inflate(this.getLayoutId(), container, false);
         } else {
-            view = getLocalView();
+            view = getOnCreateView();
         }
         init(view);
         return view;
@@ -45,6 +48,24 @@ public abstract class BaseFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        dealOnViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        dealOnDestroyView();
+    }
+
+    protected void dealOnDestroyView() {
+    }
+
+    protected void dealOnViewCreated(View view, Bundle savedInstanceState) {
+    }
+
     protected void dealOnActivityCreated(Bundle savedInstanceState) {
     }
 
@@ -58,6 +79,35 @@ public abstract class BaseFragment extends Fragment {
 
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+        dealOnAttach(context);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        dealOnDetach();
+        context = null;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        dealOnStart();
+    }
+
+    protected void dealOnStart() {
+    }
+
+    protected void dealOnDetach() {
+    }
+
+    protected void dealOnAttach(Context context) {
+    }
+
     /**
      * 初始化视图
      *
@@ -67,9 +117,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract int getLayoutId();
 
-    protected View getLocalView() {
+    protected View getOnCreateView() {
         return null;
     }
-
-    ;
 }
