@@ -75,7 +75,7 @@ public abstract class BaseFragment extends Fragment {
         super.onResume();
     }
 
-    private void dealOnResume() {
+    protected void dealOnResume() {
 
     }
 
