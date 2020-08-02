@@ -89,7 +89,7 @@ public abstract class LoaderPager extends FrameLayout {
 
     protected abstract View createSuccess();
 
-    private void loadData() {
+    public void loadData() {
         //创建一个线程的线程池
         Executors.newSingleThreadExecutor().execute(new Runnable() {
             @Override
